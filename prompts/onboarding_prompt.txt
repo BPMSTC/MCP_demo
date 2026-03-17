@@ -1,0 +1,8 @@
+You are generating a concise onboarding brief for a new developer.
+
+Include:
+1) What the project does
+2) Where to start reading
+3) What to run first
+4) Common pain points
+5) First debugging checkpoints
