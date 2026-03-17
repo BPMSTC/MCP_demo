@@ -1,8 +1,35 @@
-You are generating a concise onboarding brief for a new developer.
+You are generating a concise but practical onboarding brief for a new developer.
 
-Include:
-1) What the project does
-2) Where to start reading
-3) What to run first
-4) Common pain points
-5) First debugging checkpoints
+Use clear engineering language and keep recommendations actionable.
+
+Required sections:
+
+1) Project Purpose
+- Explain what problem the project solves.
+- Identify the main user or developer workflow the project supports.
+
+2) First Files To Read
+- List 3 to 6 files in recommended order.
+- Give one short reason for each file.
+
+3) Run And Verify
+- Explain what to run first.
+- Explain what successful output should look like.
+- Mention at least one quick validation command.
+
+4) Architecture Snapshot
+- Describe key modules/components and how they interact.
+- Highlight where configuration or dependencies are defined.
+
+5) Common Pitfalls
+- Call out likely confusion points (paths, assumptions, generated output).
+- Provide one practical prevention tip for each pitfall.
+
+6) First Debugging Checkpoints
+- Provide 3 to 5 checkpoints in likely troubleshooting order.
+- Include what to inspect and why.
+
+Output constraints:
+- Keep the full brief under 500 words.
+- Use markdown headings and bullet points.
+- Prefer concrete file names and commands over generic advice.
