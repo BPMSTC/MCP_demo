@@ -1,0 +1,9 @@
+[project]
+name = "service-hub"
+version = "0.2.0"
+description = "Sample service-oriented repo for MCP switching demos"
+requires-python = ">=3.10"
+
+dependencies = [
+  "pydantic>=2.0",
+]

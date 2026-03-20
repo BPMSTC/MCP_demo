@@ -64,7 +64,9 @@ MCP_demo/
 │   └── src/
 │       └── main.py
 ├── scripts/
-│   └── setup_mcpdemo_env.ps1
+│   ├── setup_mcpdemo_env.ps1
+│   ├── start_mcp_server.ps1
+│   └── start_demo_client.ps1
 └── tests/
 │   ├── test_repo_tools.py
 │   └── test_server_handlers.py
@@ -79,11 +81,25 @@ MCP_demo/
 pip install -r requirements.txt
 ```
 
-3. Start the MCP server:
+3. Start the MCP server with one script:
 
-```bash
-python server.py
+```powershell
+.\scripts\start_mcp_server.ps1
 ```
+
+4. Start the guided browser demo client with one script:
+
+```powershell
+.\scripts\start_demo_client.ps1
+```
+
+5. Open the URL shown in terminal output (default: http://localhost:8501).
+
+6. In the app sidebar, set **Repository path** to any Python project folder you want to analyze.
+
+- Use an absolute path, a relative path, or the included sample at `sample_repo`.
+- The app validates that the path exists, is a directory, and contains `.py` files.
+- After path validation passes, configure scan options and run the guided steps.
 
 PowerShell automation is available:
 
@@ -107,13 +123,15 @@ python -m py_compile server.py repo_tools.py
 
 ## Demo Walkthrough Suggestion
 
-1. Ask the client to call find_entry_points_tool on the repository root.
-2. Ask the client to summarize server.py, repo_tools.py, and README.md.
-3. Ask the client to fetch project://architecture.
-4. Ask the client to run generate_onboarding_summary for a project name.
-5. Show how the client can combine all outputs into a first-day onboarding note.
+1. Run **Connectivity and Capabilities (Step 0)** to verify MCP transport and list tools/resources/prompts.
+2. Run **Step 1: Find Entry Points** on the configured scan root.
+3. Run **Step 2: Summarize Core Files** for selected files in the target repository.
+4. Run **Step 3: Load Architecture Resource** to retrieve stable context.
+5. Run **Step 4: Generate Onboarding Prompt** to produce a reusable onboarding guide.
 
 For a detailed script with expected outcomes, see documents/DEMO_RUNBOOK.md.
+
+For the classroom-ready browser flow, see documents/BROWSER_DEMO_RUNBOOK.md.
 
 ## Current Scope And Limits
 

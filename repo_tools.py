@@ -19,6 +19,8 @@ IGNORED_DIRS = {
     ".git",
     ".venv",
     "venv",
+    "mcpdemo",
+    "site-packages",
     "node_modules",
     "dist",
     "build",
@@ -26,6 +28,26 @@ IGNORED_DIRS = {
     ".mypy_cache",
     ".pytest_cache",
 }
+
+
+def _is_virtualenv_subpath(path: Path, root: Path, cache: dict[Path, bool]) -> bool:
+    """Return True when `path` is under a directory containing pyvenv.cfg.
+
+    The cache keeps repeated ancestor checks cheap during recursive scans.
+    """
+    try:
+        relative_parts = path.relative_to(root).parts
+    except ValueError:
+        return False
+
+    for idx in range(1, len(relative_parts)):
+        candidate = root.joinpath(*relative_parts[:idx])
+        if candidate not in cache:
+            cache[candidate] = (candidate / "pyvenv.cfg").exists()
+        if cache[candidate]:
+            return True
+
+    return False
 
 # Filename-based heuristics and their relative confidence weights.
 ENTRY_POINT_SCORES = {
@@ -186,6 +208,7 @@ def find_entry_points(root_path: str = ".") -> str:
         return f"Root path is not a directory: {root}"
 
     candidates: list[tuple[int, Path, list[str]]] = []
+    venv_path_cache: dict[Path, bool] = {}
 
     for path in root.rglob("*"):
         if path.is_dir():
@@ -193,6 +216,8 @@ def find_entry_points(root_path: str = ".") -> str:
 
         # Skip generated and dependency-heavy paths early for speed/readability.
         if any(part.lower() in IGNORED_DIRS for part in path.parts):
+            continue
+        if _is_virtualenv_subpath(path, root, venv_path_cache):
             continue
 
         name = path.name.lower()
