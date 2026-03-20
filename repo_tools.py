@@ -9,7 +9,7 @@ from pathlib import Path
 
 # Maximum number of characters to read from each file during summarization.
 # This cap keeps responses compact and prevents accidental large payloads.
-MAX_SUMMARY_READ_CHARS = 12_000
+MAX_SUMMARY_READ_CHARS = 12000
 
 # Number of non-empty preview lines to include for each summarized file.
 MAX_PREVIEW_LINES = 8
@@ -230,7 +230,7 @@ def find_entry_points(root_path: str = ".") -> str:
         # Apply low-cost content checks only for likely code/config file types.
         if path.suffix.lower() in {".py", ".js", ".ts", ".md", ".toml", ".yml", ".yaml", ".json", ""}:
             try:
-                content = _safe_read_text(path, max_chars=6_000)
+                content = _safe_read_text(path, max_chars=6000)
             except OSError:
                 content = ""
 
