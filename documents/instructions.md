@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 content = """# Repo Onboarding Assistant MCP Server
@@ -95,49 +94,10 @@ Produces a reusable onboarding brief for a new developer.
 **Why it matters**
 This is a good example of how prompts differ from tools and resources. It also feels highly relevant to real engineering teams.
 
-## Why This Project Works Well as an MCP Demo
-
-### Practical
-
-It solves a recognizable developer problem rather than a toy problem.
-
-### Small enough to teach
-
-The code can stay compact and understandable in a live session.
-
-### Shows all three primitives
-
-It gives you a clean way to explain tools, resources, and prompts in one coherent use case.
-
-### Easy to extend
-
-You can later add GitHub integration, issue summarization, PR analysis, or local documentation retrieval.
-
-### Safe by design
-
-You can deliberately keep the first version read-only, which makes it easier to talk about approvals, scope, and least privilege.
-
-## Suggested Technical Stack
+## Technical Stack
 
 - **Python**
 - **FastMCP**
 - local repo access through standard file operations
 - optional MCP Inspector for testing
 - optional Claude Desktop or another MCP-compatible client for live invocation
-
-## Suggested Project Structure
-
-```text
-repo-onboarding-mcp/
-├── server.py
-├── repo_tools.py
-├── resources/
-│   └── architecture.md
-├── prompts/
-│   └── onboarding_prompt.txt
-├── sample_repo/
-│   ├── README.md
-│   ├── src/
-│   └── config/
-└── requirements.txt
-```

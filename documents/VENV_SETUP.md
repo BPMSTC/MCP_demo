@@ -42,6 +42,5 @@ python -m pip install -r .\requirements.txt
 
 ## Notes
 
-- Using a venv will not break your MCP server.
 - The server runs with whichever Python interpreter launches it.
 - For consistency, always use .\mcpdemo\Scripts\python.exe when running this project.
